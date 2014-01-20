@@ -30,4 +30,8 @@ Additionally, the _maven-shade-plugin_ is used to obtain some executable jars fo
 * Running the _j6-app_ with JDK 1.6 produces the following error:  
 `Exception in thread "main" java.lang.UnsupportedClassVersionError: com/github/plaufer1980/java/migration/playground/Java7Foo : Unsupported major.minor version 51.0`
 
+#### Conclusion
+* The _maven-compiler-plugin_ doesn't protect you from `UnsupportedClassVersionError` at runtime. 
+* Do not build multiple projects for multiple Java target versions in one Maven reactor.
+
 
