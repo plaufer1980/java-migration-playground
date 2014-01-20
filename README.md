@@ -25,7 +25,8 @@ Additionally, the _maven-shade-plugin_ is used to obtain some executable jars fo
 `java -jar j7-app/target/j7-app-1.0-SNAPSHOT.jar`  
 
 #### Observations 
-* Interestingly, building the _j6-app_ (which is configured to be built with JDK 1.6 target) doesn't raise any warnings or errors regarding the JDK 1.7 sources from _j7-lib_.
+* Using JDK 1.7 features directly in a module configured to compile to JDK 1.6 target results in a failing build due to compilation errors as expected. (Uncomment `Java6Foo.baz()` in _j6-lib_ to see this in action.)
+* Building the _j6-app_ (which is configured to be built with JDK 1.6 target) doesn't raise any warnings or errors regarding the JDK 1.7 sources from _j7-lib_, as Maven doesn't check the JDK compliance of the dependency module (even though its in the same reactor)!
 * Running the _j6-app_ with JDK 1.7 doesn't produce any issues.
 * Running the _j6-app_ with JDK 1.6 produces the following error:  
 `Exception in thread "main" java.lang.UnsupportedClassVersionError: com/github/plaufer1980/java/migration/playground/Java7Foo : Unsupported major.minor version 51.0`
